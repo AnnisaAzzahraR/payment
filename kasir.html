@@ -99,6 +99,11 @@
         </div>
     </div>
 
+    <script>
+        // Use relative `/api` so Netlify will proxy requests to your backend (see _redirects).
+        // If you need to test locally pointing directly to Render, change to the full URL temporarily.
+        window.API_URL = '/api';
+    </script>
     <script src="kasir.js"></script>
 </body>
 </html>

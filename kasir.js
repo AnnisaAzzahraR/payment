@@ -1,5 +1,6 @@
 
-        const API_URL = 'https://github.com/AnnisaAzzahraR/payment.git/api'; 
+        // Read backend URL from global `window.API_URL` set in HTML, else fallback to deployed Render URL
+        const API_URL = (window.API_URL && window.API_URL.replace(/\/$/, '')) || 'https://payment-qich.onrender.com'; 
         let currentInvoice = null;
         let selectedPaymentMethod = 'CASH'; 
 
@@ -30,7 +31,7 @@
                     const displayRM = inv.mr_no ? `<span class="text-xs text-slate-400 ml-1">(${inv.mr_no})</span>` : '';
                     tbody.innerHTML += `<tr class="border-b border-slate-50 hover:bg-blue-50/50 transition cursor-pointer" onclick="selectInvoice('${inv.id}')"><td class="p-4 font-mono text-xs text-slate-500">#${inv.id.substring(0,6)}</td><td class="p-4 font-bold text-slate-700 text-sm">${inv.patient_name} ${displayRM}</td><td class="p-4 font-bold text-slate-700">Rp ${parseInt(inv.total_amount).toLocaleString('id-ID')}</td><td class="p-4">${statusBadge}</td><td class="p-4 text-center">${actionBtn}</td></tr>`;
                 });
-            } catch (error) { tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-red-500">Gagal koneksi server 3001!</td></tr>`; }
+            } catch (error) { tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-red-500">Gagal koneksi server!</td></tr>`; }
         }
 
         // 2. PILIH INVOICE
