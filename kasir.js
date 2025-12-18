@@ -1,5 +1,5 @@
 
-        const API_URL = 'https://github.com/AnnisaAzzahraR/payment.git'; 
+        const API_URL = 'https://github.com/AnnisaAzzahraR/payment.git/api'; 
         let currentInvoice = null;
         let selectedPaymentMethod = 'CASH'; 
 
