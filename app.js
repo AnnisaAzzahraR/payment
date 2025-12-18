@@ -7,7 +7,7 @@ const cors = require("cors");
 const { Pool } = require("pg");
 
 const app = express();
-const PORT = 3001; 
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -23,6 +23,15 @@ pool.connect((err) => {
 });
 
 // --- ROUTES ---
+
+// Health check endpoint
+app.get("/", (req, res) => {
+  res.json({ 
+    message: "✅ SIMRS Payment API is running!", 
+    status: "healthy",
+    timestamp: new Date().toISOString()
+  });
+});
 
 // 1. GET ALL (Dengan Nama Pasien)
 app.get("/api/invoices", async (req, res) => {
